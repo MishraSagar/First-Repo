@@ -1,0 +1,294 @@
+* {
+    box-sizing: border-box;
+    font-family: arial;
+    line-height: 1.5;
+    color: #222222;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../images/yellow_background.png') repeat;
+
+}
+
+@font-face {
+    font-family: ballpark;
+    src: url('../fonts/ballpark.ttf');
+}
+
+.main-container {
+    margin: 10px 30px;
+}
+
+.fantasy-heading {
+    font-family: fantasy;
+    font-size: 24px;
+}
+
+.logo-caption {
+    font-family: fantasy;
+}
+
+/* .clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+} */
+
+.clearfix {
+    overflow: auto;
+}
+
+/*==========header==========*/
+
+header {
+    height: 150px;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    background: url('../images/line.png');
+    position: absolute;
+    bottom: 0px;
+    height: 3px;
+    left: 0;
+    right: 0;
+}
+
+header > h1{
+    font-family: ballpark;
+    font-size: 56px;
+    font-weight: 300;
+    margin: 0;
+}
+
+header > h1::before {
+    background-image: url('../images/zozor_logo.png');
+    background-size: 80px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    content: "";
+}
+
+header > div {
+    font-size: 24px;
+    margin-top: 0px;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}
+
+nav a {
+    font-size: 32px;
+    font-family: fantasy;
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+/*==============image=============*/
+
+.image-box {
+    position: relative;
+    background-image: url('../images/sanfrancisco.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 220px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25%;
+    background-color: rgba(0,0,0,0.7);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+}
+
+.image-caption p {
+    color: #dddddd;
+    padding-left: 10px;
+}
+
+/* .image-box a {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    padding: 10px 15px;
+    background: url('../images/red_background.png') repeat;
+    background-size: auto 100%;
+    border-radius: 5px;
+} */
+.image-caption button {
+    position: absolute;
+    background: url('../images/red_background.png') repeat;
+    background-size: auto 100%;
+    border-radius: 5px;
+    right: 15px;
+    bottom: 4px;
+    border: 0px;
+    padding: 10px 20px;
+}
+
+.image-caption button a{
+    text-decoration: none;
+    color: #dddddd;
+    font-size: 1.5em;
+}
+
+/* ===================main-content================ */
+
+.content-section {
+    position: relative;
+    margin: 40px 0px;
+    padding-bottom: 40px;
+}
+.content-section::after {
+    content: '';
+    background: url('../images/line.png');
+    position: absolute;
+    box-shadow: 0px 1px 4px;
+    bottom: 0px;
+    height: 3px;
+    left: 0;
+    right: 0;
+}
+
+.about-box {
+    background-color: #706b63;
+    border-radius: 10px;
+    float: right;
+    /* position: absolute;
+    right: 0; */
+    width: 350px;
+    position: relative;
+    padding: 30px 20px ;
+    box-shadow: 0px 4px 8px;
+}
+
+.about-box > .fantasy-heading {
+    color: #dddddd;
+}
+
+.about-box::before {
+    content: "";
+    background-image: url('../images/arrow.png');
+    position: absolute;
+    width: 12px;
+    height: 17px;
+    left: -12px;
+    top: 150px;
+
+}
+
+.about-box p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #dddddd;
+    padding-top: 5px;
+}
+
+.about-heading {
+    color: #dddddd;
+    font-family: fantasy;
+    font-size: 24px;
+}
+
+.author-image {
+    display: block;
+    margin: 10px auto;
+    border: 2px solid black;
+}
+
+.social-links-content {
+    padding-left: 15px;
+}
+
+.social-links-content a{
+    display: inline-block;
+    width: 18%;
+}
+
+.social-links-content > a img{
+    width: 100%;
+}
+
+.content > .fantasy-heading::before {
+    background-image: url('../images/pin.png');
+    background-size: 55px;
+    content: "";
+    display: inline-block;
+    height: 60px;
+    width: 55px;
+    position: relative;
+    top: 20px;
+}
+
+.content {
+    width: 850px;
+}
+
+.content p {
+    padding: 5px 0;
+    text-align: justify;
+}
+
+#content-section-top-image {
+    position: absolute;
+    z-index: 1;
+    bottom: -25px;
+    left: 50%;
+}
+
+/* ===================footer-content=================== */
+
+.footer {
+    margin: 30px 0;
+}
+
+.footer-content-box {
+    width: 400px;
+    float: left;
+    padding: 10px 0px;
+}
+
+.footer-content-box div{
+    padding: 0 10px 10px;
+}
+
+.pictures-container {
+    font-size: 4px;
+}
+
+.pictures-container img{
+    border: 2px solid black;
+    width: 90px;
+}
+
+.footer-content-box ul {
+    display: inline-block;
+    margin: 0px;
+    margin-right: 30px;
+    list-style-image: url('../images/external_link.png');
+    padding: 0 20px;
+}
+
+.footer-content-box ul a {
+    text-decoration: none;
+    color: #a53848;
+}
