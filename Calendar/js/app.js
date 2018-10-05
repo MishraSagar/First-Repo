@@ -94,18 +94,12 @@ function createCalendar() {
     }
 
     for (var i = 1; i <= lastDateOfCurrentMonth; i++) {
-        if ((dayOnFirstOfMonth + i) % 7 == 0) {
-            classString = 'dates saturday';
-        }
-        else if ( (dayOnFirstOfMonth + i) % 7 == 1) {
-            classString = 'dates sunday';
-        }
-        else {
-            classString = 'dates';
-        }
         if ((i == _date.getDate()) && (_year == _date.getFullYear()) && (_month == _date.getMonth())) {
             classString = classString.concat(' current-date');
             console.log(classString);
+        }
+        else{
+            classString = 'dates';
         }
         _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="' + classString + '">' + i + '</div>';
     }
