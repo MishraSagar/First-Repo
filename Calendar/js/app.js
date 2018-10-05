@@ -66,9 +66,7 @@ function createCalendar() {
     var startNumber = 1;
     var lastDateOfPreviousMonth;
     var totalRows;
-    var i = 1;
-    var j = 1;
-    var k = 1;
+    var classString;
     var dayOnFirstOfMonth = (new Date(_year, _month, 1)).getDay();
     var lastDateOfCurrentMonth = (new Date(_year, _month + 1, 0)).getDate();
     var lastDayOnLastDate = (new Date(_year, _month, lastDateOfCurrentMonth)).getDay();
@@ -79,6 +77,7 @@ function createCalendar() {
     _weekElement.innerHTML = "";
     _selectedMonthElement.value = _month;
     _selectedYearElement.value = _year;
+
 
 
     if (dayOnFirstOfMonth != 0) {
@@ -96,14 +95,19 @@ function createCalendar() {
 
     for (var i = 1; i <= lastDateOfCurrentMonth; i++) {
         if ((dayOnFirstOfMonth + i) % 7 == 0) {
-            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates saturday">' + i + '</div>';
+            classString = 'dates saturday';
         }
         else if ( (dayOnFirstOfMonth + i) % 7 == 1) {
-            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates sunday">' + i + '</div>';
+            classString = 'dates sunday';
         }
         else {
-            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates">' + i + '</div>';
+            classString = 'dates';
         }
+        if ((i == _date.getDate()) && (_year == _date.getFullYear()) && (_month == _date.getMonth())) {
+            classString = classString.concat(' current-date');
+            console.log(classString);
+        }
+        _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="' + classString + '">' + i + '</div>';
     }
 
     for (var i = 1; i <= (6 - lastDayOnLastDate); i++) {
@@ -120,15 +124,6 @@ function createCalendar() {
     }
 
     generateBirthdays(lastDateOfCurrentMonth);
-
-    if ((_year == _date.getFullYear()) && (_month == _date.getMonth())) {
-        showCurrentDate();
-    }
-}
-
- function showCurrentDate() {
-     var currentDateElement = document.querySelector('[data-month-date="' + (_month + 1) + '-' + _date.getDate() + '"]');
-     currentDateElement.classList.add('current-date');
 }
 
 function generateMonthAndYearOptions(startYear, endYear) {
@@ -214,13 +209,10 @@ function generateBirthdays(lastDate) {
         birthdayBlockInnerHTML = '';
         if (typeof(birthdaysOnDate) != "undefined") {
             currentDateElement = document.querySelector('[data-month-date="' + (_month + 1) + '-' + i + '"]');
-            for (var j = 0; j < birthdaysOnDate.length; j++) {
-                birthdayBlockInnerHTML += '<p>' + birthdaysOnDate[j] + '</p>';
-                console.log(j);
-            }
-            currentDateElement.innerHTML = '<div id="bb" class="birthdayBlock">' + birthdayBlockInnerHTML + '</div>';
+            birthdayBlockInnerHTML += '<p>' + birthdaysOnDate.join(", ") + '</p>';
+            currentDateElement.innerHTML = '<div class="birthdayBlock">' + birthdayBlockInnerHTML + '</div>';
             currentDateElement.innerHTML += i + ' <i class="fa fa-birthday-cake"></i>';
-            currentDateElement.style.color = "#F96120" //"#A5DE60"; //"#D01315"
+            currentDateElement.classList.add('birthday');
         }
     }
 }
