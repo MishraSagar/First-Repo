@@ -1,10 +1,14 @@
-var date = new Date();
-var month = date.getMonth();
-var year = date.getFullYear();
-var calendar = document.getElementById('calendar');
-var monthSelectElement = document.getElementById('select-month');
-var yearSelectElement = document.getElementById('select-year');
-var weekElement = document.getElementsByClassName('week')[0];
+var _date = new Date();
+var _month = _date.getMonth();
+var _year = _date.getFullYear();
+var _calendar = document.getElementById('calendar');
+var _selectedMonthElement = document.getElementById('select-month');
+var _selectedYearElement = document.getElementById('select-year');
+var _weekElement = document.getElementsByClassName('week')[0];
+var _startYear;
+var _endYear;
+var _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 var birthdays = {
     "1" : {
         "3" : ["Shubham Katariya"],
@@ -58,114 +62,143 @@ var birthdays = {
     }
 }
 
-function setCalendar(date, month, year) {
+function createCalendar(_date, _month, _year) {
     var startNumber = 1;
     var lastDateOfPreviousMonth;
     var totalRows;
-    var dayOnFirst = (new Date(year, month, 1)).getDay();
-    var lastDateOfCurrentMonth = (new Date(year, month + 1, 0)).getDate();
-    var lastDayOnLastDate = (new Date(year, month, lastDateOfCurrentMonth)).getDay();
+    var i = 1;
+    var j = 1;
+    var k = 1;
+    var dayOnFirstOfMonth = (new Date(_year, _month, 1)).getDay();
+    var lastDateOfCurrentMonth = (new Date(_year, _month + 1, 0)).getDate();
+    var lastDayOnLastDate = (new Date(_year, _month, lastDateOfCurrentMonth)).getDay();
     var weekOnFirst = calculateWeekNo();
     var weekOnLast;
     console.log(weekOnFirst);
-    calendar.innerHTML = "";
-    weekElement.innerHTML = "";
-    monthSelectElement.value = month;
-    yearSelectElement.value = year;
+    _calendar.innerHTML = "";
+    _weekElement.innerHTML = "";
+    _selectedMonthElement.value = _month;
+    _selectedYearElement.value = _year;
 
 
-    if (dayOnFirst != 0) {
-        lastDateOfPreviousMonth = (new Date(year, month, 0)).getDate();
-        startNumber = lastDateOfPreviousMonth - dayOnFirst + 1;
+    if (dayOnFirstOfMonth != 0) {
+        lastDateOfPreviousMonth = (new Date(_year, _month, 0)).getDate();
+        startNumber = lastDateOfPreviousMonth - dayOnFirstOfMonth + 1;
     }
 
-    totalRows = Math.floor(((dayOnFirst + lastDateOfCurrentMonth - 1) / 7) + 1);
+    totalRows = Math.floor(((dayOnFirstOfMonth + lastDateOfCurrentMonth - 1) / 7) + 1);
     weekOnLast = weekOnFirst + totalRows - 1;
+    dayOnFirstSaturday = 7 - dayOnFirstOfMonth;
 
     for (var i = startNumber; i <= lastDateOfPreviousMonth; i++) {
-        calendar.innerHTML += '<div class="dates prev-next-date"><span>' + i + '</span><div>';
+        _calendar.innerHTML += '<div class="dates prev-next-date"><span>' + i + '</span><div>';
     }
 
     for (var i = 1; i <= lastDateOfCurrentMonth; i++) {
-        calendar.innerHTML += '<div data-month-date="' + (month + 1) + '-' + i + '" class="dates">' + i + '</div>';
+        if ((dayOnFirstOfMonth + i) % 7 == 0) {
+            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates saturday">' + i + '</div>';
+        }
+        else if ( (dayOnFirstOfMonth + i) % 7 == 1) {
+            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates sunday">' + i + '</div>';
+        }
+        else {
+            _calendar.innerHTML += '<div data-month-date="' + (_month + 1) + '-' + i + '" class="dates">' + i + '</div>';
+        }
     }
 
-    // lastRowRemBlocks = ( totalDateElementNo <= 35) ? (35 - totalDateElementNo) : (42 - totalDateElementNo);
-    // lastRowRemBlocks = noOfBlocksInRow - ( (lastDateOfCurrentMonth + dayOnFirst + dateBlockDiff) % noOfBlocksInRow);
-
     for (var i = 1; i <= (6 - lastDayOnLastDate); i++) {
-        calendar.innerHTML += '<div class="dates prev-next-date">' + i + '<div>';
+        _calendar.innerHTML += '<div class="dates prev-next-date">' + i + '<div>';
     }
 
     for (var i = weekOnFirst; i <= weekOnLast; i++) {
         if (i < 53) {
-            weekElement.innerHTML += '<div class="week-block">' + i + '</div>';
+            _weekElement.innerHTML += '<div class="week-block">' + i + '</div>';
         }
         else {
-            weekElement.innerHTML += '<div class="week-block"></div>';
+            _weekElement.innerHTML += '<div class="week-block"></div>';
         }
     }
 
     generateBirthdays(lastDateOfCurrentMonth);
 
-    if ((year == date.getFullYear()) && (month == date.getMonth())) {
+    if ((_year == _date.getFullYear()) && (_month == _date.getMonth())) {
         showCurrentDate();
     }
 }
 
  function showCurrentDate() {
-     var currentDateElement = document.querySelector('[data-month-date="' + (month + 1) + '-' + date.getDate() + '"]');
-     currentDateElement.style.color = "Blue";
-     currentDateElement.style.fontWeight = "600";
+     var currentDateElement = document.querySelector('[data-month-date="' + (_month + 1) + '-' + _date.getDate() + '"]');
+     currentDateElement.classList.add('current-date');
 }
 
-function generateYearOptions(firstYear, lastYear) {
-    for (var i = firstYear; i <= lastYear; i++){
-        yearSelectElement.innerHTML += '<option value="' + i + '">' + i + '</option>';
+function generateMonthAndYearOptions(startYear, endYear) {
+    _startYear = startYear;
+    _endYear = endYear;
+    for (var i = startYear; i <= endYear; i++){
+        _selectedYearElement.innerHTML += '<option value="' + i + '">' + i + '</option>';
+    }
+
+    for (var i = 0; i < 12; i++) {
+        _selectedMonthElement.innerHTML += '<option value="' + i + '">' + _months[i].toUpperCase() + '</option>';
     }
 }
 
-function calculateWeekNo(){
-    var firstDateOfMonth = new Date(year, month, 1);
-    var firstDateOfYear = new Date(year, 0, 1);
+function generateWeekDays() {
+    var weekHeader = document.getElementsByClassName('week-days')[0];
+    var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    for(var i = 0; i < 7; i++) {
+        weekHeader.innerHTML += '<div class="day">' + dayNames[i] + '</div>';
+    }
+}
+
+function calculateWeekNo() {
+    var firstDateOfMonth = new Date(_year, _month, 1);
+    var firstDateOfYear = new Date(_year, 0, 1);
     if (firstDateOfMonth.getDay() == 0) {
-        firstDateOfMonth = new Date(year, month, 2);
+        firstDateOfMonth = new Date(_year, _month, 2);
     }
-    var weekNoOnFirst = Math.floor((firstDateOfMonth.getTime() - firstDateOfYear.getTime()) / (1000 * 60 * 60 * 24 * 7)) + 1;
-    return weekNoOnFirst;
+    return (Math.floor((firstDateOfMonth.getTime() - firstDateOfYear.getTime()) / (1000 * 60 * 60 * 24 * 7)) + 1);
 }
 
 //Event Listeners
 document.getElementById('prev-click').addEventListener('click', function() {
-    if (month == 0) {
-        year -= 1;
-        month = 11;
+    if (_month == 0) {
+        if (_year == _startYear) {
+            alert('You can not see previous year');
+            return ;
+        }
+        _year -= 1;
+        _month = 11;
     }
     else {
-        month -= 1;
+        _month -= 1;
     }
-    setCalendar(date, month, year);
+    createCalendar(_date, _month, _year);
 });
 
 document.getElementById('next-click').addEventListener('click', function() {
-    if (month == 11) {
-        year += 1;
-        month = 0;
+    if (_month == 11) {
+        if (_year == _endYear) {
+            alert('You can not see next year');
+            return ;
+        }
+        _year += 1;
+        _month = 0;
     }
     else{
-        month += 1;
+        _month += 1;
     }
-    setCalendar(date, month, year);
+    createCalendar(_date, _month, _year);
 });
 
-yearSelectElement.addEventListener('change', function() {
-    year = Number(yearSelectElement.value);
-    setCalendar(date, month, year);
+_selectedYearElement.addEventListener('change', function() {
+    _year = Number(_selectedYearElement.value);
+    createCalendar(_date, _month, _year);
 });
 
-monthSelectElement.addEventListener('change', function() {
-    month = Number(monthSelectElement.value);
-    setCalendar(date, month, year);
+_selectedMonthElement.addEventListener('change', function() {
+    _month = Number(_selectedMonthElement.value);
+    createCalendar(_date, _month, _year);
 });
 
 function generateBirthdays(lastDate) {
@@ -176,30 +209,25 @@ function generateBirthdays(lastDate) {
     console.log('check');
 
     for (var i = 1; i <= lastDate; i++) {
-        birthdaysOnDate = birthdays[String(month + 1)][String(i)];
+        birthdaysOnDate = birthdays[String(_month + 1)][String(i)];
         console.log(birthdaysOnDate);
         birthdayBlockInnerHTML = '';
-        if (birthdaysOnDate != undefined) {
-            currentDateElement = document.querySelector('[data-month-date="' + (month + 1) + '-' + i + '"]');
+        if (typeof(birthdaysOnDate) != "undefined") {
+            currentDateElement = document.querySelector('[data-month-date="' + (_month + 1) + '-' + i + '"]');
             for (var j = 0; j < birthdaysOnDate.length; j++) {
                 birthdayBlockInnerHTML += '<p>' + birthdaysOnDate[j] + '</p>';
                 console.log(j);
             }
-            currentDateElement.innerHTML = '<div id="bb" class="birthdayBlock" onmouseover="onBirthdayHover()">' + birthdayBlockInnerHTML + '</div>';
+            currentDateElement.innerHTML = '<div id="bb" class="birthdayBlock">' + birthdayBlockInnerHTML + '</div>';
             currentDateElement.innerHTML += i + ' <i class="fa fa-birthday-cake"></i>';
             currentDateElement.style.color = "#F96120" //"#A5DE60"; //"#D01315"
         }
     }
 }
 
-function onBirthdayHover() {
-        window.setInterval(function() {
-            var elem = document.getElementById('bb');
-            elem.scrollTop = elem.scrollHeight;
-        }, 1000);
-}
 
 (function() {
-    generateYearOptions(2000, 2025);
-    setCalendar(date, month, year);
+    generateMonthAndYearOptions(1970, 2048);
+    createCalendar(_date, _month, _year);
+    generateWeekDays();
 })();

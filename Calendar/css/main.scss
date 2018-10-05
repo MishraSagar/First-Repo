@@ -71,10 +71,6 @@ body {
 
         }
 
-        .calendar-content {
-            padding: 20px 0;
-        }
-
         .week-days {
             height: 50px;
             background-color: #fa6240;
@@ -84,16 +80,23 @@ body {
                 font-weight: 400;
                 color: white;
                 padding-top: 5px;
+                padding-bottom: 9px;
+            }
+
+            .week-label {
+                background-color: #a7b3e2;
+                color: #333333;
             }
         }
 
         .week {
             @extend %divider;
             height: 100%;
-
+            background-color: #a7b3e2;
+            border-bottom-left-radius: 10px;
             .week-block {
                 height: 65px;
-                color: #999999;
+                padding-top: 15px;
             }
         }
 
@@ -101,13 +104,7 @@ body {
             @extend %divider;
             height: 65px;
             position: relative;
-            &:nth-child(7n+1){
-                color: red;
-            }
-
-            &:nth-child(7n){
-                color: green;
-            }
+            padding-top: 15px;
 
             .birthdayBlock {
                 background: #c2e59c;
@@ -147,8 +144,23 @@ body {
             }
         }
 
+        .saturday {
+            color: green;
+        }
+
+        .sunday {
+            color: red;
+        }
+
+        .current-date{
+            font-weight: 600;
+            color: blue;
+            font-size: 24px;
+        }
+
         .prev-next-date{
             color: #999999;
+            background-color: rgba(200, 200, 200, 0.3);
         }
 
 }

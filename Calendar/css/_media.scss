@@ -25,31 +25,29 @@
 
         }
 
-        .calendar-content {
-            padding: 10px 0;
-        }
-
         .week-days {
             height: 30px;
 
             .day {
                 font-size: 18px;
+                padding-bottom: 0;
             }
         }
 
         .week {
             .week-block {
                 height: 40px;
+                padding-top: 5px;
             }
         }
 
         .dates {
              height: 40px;
+             padding-top: 5px;
 
             .birthdayBlock {
                 font-size: 14px;
             }
-
         }
     }
 }
@@ -73,33 +71,29 @@
             }
         }
 
-        .calendar-content {
-            padding: 15px 0;
-        }
-
         .week-days {
             height: 40px;
 
             .day {
                 font-size: 22px;
+                padding-bottom: 2px;
             }
         }
 
         .week {
             .week-block {
                 height: 50px;
+                padding-top: 10px;
             }
         }
 
         .dates {
              height: 50px;
+             padding-top: 10px;
 
             .birthdayBlock {
                 font-size: 14px;
             }
-
-
         }
     }
-
 }
