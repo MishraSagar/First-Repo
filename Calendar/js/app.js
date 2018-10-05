@@ -62,7 +62,7 @@ var birthdays = {
     }
 }
 
-function createCalendar(_date, _month, _year) {
+function createCalendar() {
     var startNumber = 1;
     var lastDateOfPreviousMonth;
     var totalRows;
@@ -173,7 +173,7 @@ document.getElementById('prev-click').addEventListener('click', function() {
     else {
         _month -= 1;
     }
-    createCalendar(_date, _month, _year);
+    createCalendar();
 });
 
 document.getElementById('next-click').addEventListener('click', function() {
@@ -188,17 +188,17 @@ document.getElementById('next-click').addEventListener('click', function() {
     else{
         _month += 1;
     }
-    createCalendar(_date, _month, _year);
+    createCalendar();
 });
 
 _selectedYearElement.addEventListener('change', function() {
     _year = Number(_selectedYearElement.value);
-    createCalendar(_date, _month, _year);
+    createCalendar();
 });
 
 _selectedMonthElement.addEventListener('change', function() {
     _month = Number(_selectedMonthElement.value);
-    createCalendar(_date, _month, _year);
+    createCalendar();
 });
 
 function generateBirthdays(lastDate) {
@@ -228,6 +228,6 @@ function generateBirthdays(lastDate) {
 
 (function() {
     generateMonthAndYearOptions(1970, 2048);
-    createCalendar(_date, _month, _year);
+    createCalendar();
     generateWeekDays();
 })();
