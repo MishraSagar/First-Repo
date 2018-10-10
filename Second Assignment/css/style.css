@@ -1,0 +1,297 @@
+@font-face {
+  font-family: cooper-medium;
+  src: url("../fonts/CooperHewitt-Medium.otf"); }
+@font-face {
+  font-family: cooper-bold;
+  src: url("../fonts/CooperHewitt-Bold.otf"); }
+@font-face {
+  font-family: cooper-book;
+  src: url("../fonts/CooperHewitt-Book.otf"); }
+@font-face {
+  font-family: cooper-light;
+  src: url("../fonts/CooperHewitt-Light.otf"); }
+@font-face {
+  font-family: cooper-semibold;
+  src: url("../fonts/CooperHewitt-Semibold.otf"); }
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: cooper-medium;
+  line-height: 1.5;
+  letter-spacing: 0.1em; }
+
+/*============header=============*/
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("../images/first.jpg");
+  height: 950px;
+  position: relative;
+  background-origin: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px; }
+  header .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    header .content h2 {
+      font-family: cooper-bold;
+      letter-spacing: 0.05em;
+      font-size: 6vw;
+      text-align: center;
+      color: #dddddd; }
+    header .content p {
+      font-family: cooper-light;
+      font-size: 20px;
+      font-weight: 100;
+      text-align: center;
+      color: #dddddd; }
+
+.navigation {
+  letter-spacing: 0.2em;
+  text-align: center; }
+  .navigation ul {
+    padding-left: 0; }
+    .navigation ul li {
+      display: inline-block; }
+      .navigation ul li a {
+        padding: 10px 10px;
+        text-decoration: none;
+        color: #bbbbbb;
+        transition: color 0.4s; }
+        .navigation ul li a:hover {
+          color: #dddddd;
+          font-weight: 400px; }
+        .navigation ul li a img {
+          width: 200px;
+          position: relative;
+          top: 25px; }
+
+.content-container {
+  margin: 0 100px;
+  padding: 70px 35px; }
+
+.content-container .information-content > div {
+  float: left; }
+.content-container .information-content .about {
+  width: 75%;
+  padding-right: 90px; }
+  .content-container .information-content .about .heading {
+    font-family: cooper-semibold;
+    font-size: 32px; }
+    .content-container .information-content .about .heading + p {
+      margin: 25px 0 55px;
+      color: inherit;
+      font-family: cooper-book; }
+  .content-container .information-content .about p {
+    margin: 15px 0;
+    font-family: cooper-light;
+    color: #999999; }
+.content-container .information-content .contact-info .info .heading {
+  font-family: cooper-book; }
+.content-container .information-content .contact-info .info .content {
+  margin: 15px 0 55px;
+  color: #999999;
+  font-family: cooper-light;
+  font-style: normal; }
+
+.food-image img {
+  width: 100%; }
+
+.main-menu-container .logo, .other-menu .logo {
+  text-align: center; }
+  .main-menu-container .logo > img, .other-menu .logo > img {
+    width: 315px; }
+.main-menu-container .menu-row, .other-menu .menu-row {
+  margin: 75px 0 0;
+  padding: 20px 0; }
+  .main-menu-container .menu-row .heading, .other-menu .menu-row .heading {
+    margin-bottom: 45px;
+    text-align: center;
+    font-family: cooper-light;
+    color: #444444; }
+  .main-menu-container .menu-row .item, .other-menu .menu-row .item {
+    width: 32%;
+    display: inline-block;
+    padding: 15px; }
+    .main-menu-container .menu-row .item .item-name, .other-menu .menu-row .item .item-name {
+      font-family: cooper-medium;
+      color: #888888; }
+    .main-menu-container .menu-row .item .price, .other-menu .menu-row .item .price {
+      font-family: cooper-light;
+      color: #999999;
+      float: right; }
+      .main-menu-container .menu-row .item .price::before, .other-menu .menu-row .item .price::before {
+        content: '$';
+        font-family: arial; }
+    .main-menu-container .menu-row .item .ingredients, .other-menu .menu-row .item .ingredients {
+      font-family: cooper-light;
+      color: #999999; }
+
+.other-menu {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("../images/third.jpg");
+  background-origin: border-box;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .other-menu .menu-row {
+    padding-bottom: 85px; }
+    .other-menu .menu-row .item .item-name, .other-menu .menu-row .item .price, .other-menu .menu-row .item .ingredients {
+      color: #eeeeee;
+      line-height: 1.5; }
+
+.reservation .content-container {
+  text-align: center; }
+  .reservation .content-container .center-content .heading {
+    padding-top: 20px;
+    font-size: 42px;
+    font-family: cooper-semibold; }
+  .reservation .content-container .center-content .subheading {
+    font-size: 12px;
+    font-family: cooper-book;
+    margin-bottom: 30px; }
+  .reservation .content-container .center-content .find-table {
+    padding: 15px 30px;
+    background-color: #3e3e3e;
+    display: inline-block;
+    border-radius: 50px;
+    color: #dddddd;
+    font-family: cooper-book;
+    font-size: 12px;
+    text-decoration: none; }
+  .reservation .content-container .center-content .booking-info {
+    margin-top: 70px; }
+    .reservation .content-container .center-content .booking-info p {
+      font-family: cooper-light;
+      color: #999999;
+      letter-spacing: 1px; }
+    .reservation .content-container .center-content .booking-info p:last-child {
+      font-style: italic; }
+
+.social-logo-content {
+  background-color: #1f1f1f;
+  text-align: center; }
+  .social-logo-content .logos {
+    display: inline-block;
+    margin: 40px; }
+    .social-logo-content .logos .logo {
+      display: block;
+      float: left;
+      width: 40px;
+      height: 40px;
+      border: 2px solid white;
+      border-radius: 50%;
+      margin: 5px;
+      color: #dddddd;
+      font-size: 32px;
+      padding: 3px; }
+
+footer {
+  background-color: #171717;
+  text-align: center; }
+  footer .content-container .center-content {
+    display: inline-block; }
+    footer .content-container .center-content p {
+      text-align: center;
+      color: #dddddd;
+      font-family: sans-serif;
+      font-weight: 100;
+      font-size: 12;
+      letter-spacing: 1px; }
+    footer .content-container .center-content p:last-child {
+      margin-top: 30px;
+      color: #999999; }
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .content-container {
+    margin: 0 20px;
+    padding: 20px 10px; }
+
+  header {
+    height: 500px; }
+    header .content {
+      top: 75%; }
+      header .content h2 {
+        font-size: 8vw; }
+      header .content p {
+        font-size: 3vw; }
+    header .navigation {
+      letter-spacing: 0.1em; }
+      header .navigation ul {
+        position: relative;
+        margin-top: 100px;
+        width: 150px;
+        display: inline-block; }
+        header .navigation ul li {
+          display: block;
+          text-align: left; }
+          header .navigation ul li a {
+            padding: 0px; }
+            header .navigation ul li a img {
+              width: 150px;
+              position: absolute;
+              top: -50px;
+              left: 50%;
+              transform: translate(-50%, -50%); }
+
+  .content-container .information-content .about {
+    width: 100%;
+    padding-right: 20px; }
+  .content-container .information-content .contact-info .info .content {
+    margin: 15px 0 30px; }
+
+  .main-menu-container .menu-row, .other-menu .menu-row {
+    margin-top: 0px; }
+    .main-menu-container .menu-row .heading, .other-menu .menu-row .heading {
+      margin-bottom: 0px; }
+    .main-menu-container .menu-row .item, .other-menu .menu-row .item {
+      width: 100%; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .content-container {
+    margin: 0 20px;
+    padding: 20px 10px; }
+
+  header {
+    height: 700px; }
+    header .content h2 {
+      font-size: 7vw; }
+    header .content p {
+      font-size: 3vw; }
+    header .navigation {
+      letter-spacing: 0.1em; }
+      header .navigation ul {
+        position: relative;
+        margin-top: 100px; }
+        header .navigation ul li a {
+          padding: 10px 5px; }
+          header .navigation ul li a img {
+            width: 150px;
+            position: absolute;
+            top: -50px;
+            transform: translate(-50%, -50%); }
+
+  .content-container .information-content > div {
+    width: 100%; }
+  .content-container .information-content .about {
+    width: 100%;
+    padding-right: 20px; }
+  .content-container .information-content .contact-info .info {
+    float: left;
+    width: 33%; }
+
+  .main-menu-container .menu-row, .other-menu .menu-row {
+    margin-top: 0px; }
+    .main-menu-container .menu-row .heading, .other-menu .menu-row .heading {
+      margin-bottom: 20px; }
+    .main-menu-container .menu-row .item, .other-menu .menu-row .item {
+      width: 49%; }
+
+  .reservation .content-container .center-content .heading {
+    font-size: 5vw; } }
+
+/*# sourceMappingURL=style.css.map */

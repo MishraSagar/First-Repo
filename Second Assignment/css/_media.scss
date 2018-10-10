@@ -1,0 +1,135 @@
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    .content-container {
+        margin: 0 20px;
+        padding: 20px 10px;
+    }
+    header {
+        height: 500px;
+        .content {
+            top: 75%;
+            h2 {
+                font-size: 8vw;
+            }
+            p {
+                font-size: 3vw;
+            }
+        }
+        .navigation {
+            letter-spacing: 0.1em;
+            ul {
+                    position: relative;
+                    margin-top: 100px;
+                    width: 150px;
+                    display: inline-block;
+                li{
+                    display: block;
+                    text-align: left;
+                    a{
+                        padding: 0px;
+                        img{
+                            width: 150px;
+                            position: absolute;
+                            top: -50px;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .content-container {
+        .information-content {
+            .about {
+                width: 100%;
+                padding-right: 20px;
+            }
+            .contact-info {
+                .info {
+                    .content {
+                        margin: 15px 0 30px;
+                    }
+                }
+            }
+        }
+    }
+    %content-container {
+        .menu-row {
+            margin-top: 0px;
+            .heading {
+                margin-bottom: 0px;
+            }
+            .item {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .content-container {
+        margin: 0 20px;
+        padding: 20px 10px;
+    }
+    header {
+        height: 700px;
+        .content {
+            h2 {
+                font-size: 7vw;
+            }
+            p{
+                font-size: 3vw;
+            }
+        }
+        .navigation {
+            letter-spacing: 0.1em;
+            ul {
+                position: relative;
+                margin-top: 100px;
+                li{
+                    a{
+                        padding: 10px 5px;
+                        img{
+                            width: 150px;
+                            position: absolute;
+                            top: -50px;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .content-container {
+        .information-content {
+            > div {
+                width: 100%;
+            }
+            .about {
+                width: 100%;
+                padding-right: 20px;
+            }
+            .contact-info {
+                .info {
+                    float: left;
+                    width: 33%;
+                }
+            }
+        }
+    }
+    %content-container {
+        .menu-row {
+            margin-top: 0px;
+            .heading {
+                margin-bottom: 20px;
+            }
+            .item {
+                width: 49%;
+            }
+        }
+    }
+    .reservation .content-container .center-content .heading {
+        font-size: 5vw;
+    }
+}

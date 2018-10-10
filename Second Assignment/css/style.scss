@@ -1,0 +1,296 @@
+@font-face {
+    font-family: cooper-medium;
+    src: url('../fonts/CooperHewitt-Medium.otf');
+}
+@font-face {
+    font-family: cooper-bold;
+    src: url('../fonts/CooperHewitt-Bold.otf');
+}
+@font-face {
+    font-family: cooper-book;
+    src: url('../fonts/CooperHewitt-Book.otf');
+}
+@font-face {
+    font-family: cooper-light;
+    src: url('../fonts/CooperHewitt-Light.otf');
+}
+@font-face {
+    font-family: cooper-semibold;
+    src: url('../fonts/CooperHewitt-Semibold.otf');
+}
+
+$black: #222222;
+$white: #dddddd;
+$lightgrey: #999999;
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    font-family: cooper-medium;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+}
+
+$images: '../images/';
+/*============header=============*/
+header {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url($images+'first.jpg');
+    height: 950px;
+    position: relative;
+    background-origin: border-box;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+     .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        h2 {
+            font-family: cooper-bold;
+            letter-spacing: 0.05em;
+            font-size: 6vw;
+            text-align: center;
+            color: $white;
+        }
+        p {
+            font-family: cooper-light;
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: $white;
+        }
+    }
+}
+
+
+.navigation {
+    letter-spacing: 0.2em;
+    text-align: center;
+    ul {
+        padding-left: 0;
+        li {
+            display: inline-block;
+            a {
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    color: #bbbbbb;
+                    transition: color 0.4s;
+                &:hover {
+                    color: $white;
+                    font-weight: 400px;
+                }
+                img {
+                    width: 200px;
+                    position: relative;
+                    top: 25px;
+                }
+            }
+        }
+    }
+}
+
+.content-container {
+    margin: 0 100px;
+    padding: 70px 35px;
+}
+.content-container {
+    .information-content {
+        > div {
+            float: left;
+        }
+        .about {
+            width: 75%;
+            padding-right: 90px;
+
+            .heading {
+                font-family: cooper-semibold;
+                font-size: 32px;
+                &+p {
+                    margin: 25px 0 55px;
+                    color:inherit;
+                    font-family: cooper-book;
+                }
+            }
+
+            p {
+                margin: 15px 0;
+                font-family: cooper-light;
+                color: $lightgrey;
+            }
+        }
+        .contact-info {
+
+            .info {
+                .heading {
+                    font-family: cooper-book;
+                }
+                .content {
+
+                    margin: 15px 0 55px;
+                    color: $lightgrey;
+                    font-family: cooper-light;
+                    font-style: normal;
+                }
+
+            }
+        }
+    }
+}
+
+.food-image {
+    img {
+        width: 100%;
+    }
+}
+
+%content-container {
+    .logo{
+        text-align: center;
+
+        > img {
+            width: 315px;
+        }
+    }
+    .menu-row {
+        margin: 75px 0 0;
+        padding: 20px 0;
+        .heading {
+            margin-bottom: 45px;
+            text-align: center;
+            font-family: cooper-light;
+            color: #444444;
+        }
+        .item{
+            width: 32%;
+            display: inline-block;
+            padding: 15px;
+            .item-name {
+                font-family: cooper-medium;
+                color: #888888;
+            }
+            .price {
+                font-family: cooper-light;
+                color: $lightgrey;
+                 &::before{
+                     content: '$';
+                     font-family: arial;
+                 }
+                 float: right;
+            }
+            .ingredients {
+                font-family: cooper-light;
+                color: $lightgrey;
+            }
+        }
+    }
+}
+.main-menu-container{
+    @extend %content-container;
+}
+
+.other-menu {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url($images+'third.jpg');
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @extend %content-container;
+    .menu-row {
+            .item {
+                .item-name, .price, .ingredients {
+                    color: #eeeeee;
+                    line-height: 1.5;
+            }
+        }
+            padding-bottom: 85px;
+
+    }
+}
+
+.reservation .content-container {
+    text-align: center;
+    .center-content{
+        .heading {
+            padding-top: 20px;
+            font-size: 42px;
+            font-family: cooper-semibold;
+        }
+        .subheading {
+            font-size: 12px;
+            font-family: cooper-book;
+            margin-bottom: 30px;
+        }
+        .find-table {
+            padding: 15px 30px;
+            background-color: #3e3e3e;
+            display: inline-block;
+            border-radius: 50px;
+            color: $white;
+            font-family: cooper-book;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .booking-info {
+            margin-top: 70px;
+            p {
+            font-family: cooper-light;
+            color: $lightgrey;
+            letter-spacing: 1px;
+            }
+            p:last-child {
+                font-style: italic;
+            }
+        }
+    }
+}
+
+.social-logo-content {
+    background-color: #1f1f1f;
+    text-align: center;
+    .logos{
+        display: inline-block;
+        margin: 40px;
+        .logo {
+            display: block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin: 5px;
+            color: $white;
+            font-size: 32px;
+            padding: 3px;
+        }
+    }
+}
+
+footer {
+    background-color: #171717;
+    text-align: center;
+    .content-container .center-content {
+        display: inline-block;
+        p {
+            text-align: center;
+            color: $white;
+            font-family: sans-serif;
+            font-weight: 100;
+            font-size: 12;
+            letter-spacing: 1px;
+        }
+        p:last-child {
+            margin-top: 30px;
+            color: $lightgrey;
+        }
+    }
+}
+
+@import 'media';
