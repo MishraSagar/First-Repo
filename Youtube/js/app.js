@@ -47,7 +47,18 @@ window.addEventListener('scroll', function() {
 
 //this function generates video snippet elements and adds them to DOM.
 function generateVideoSnippetElements(results) {
+    var row;
+    var rowHtml;
     for (var i = 0; i < results.items.length; i++) {
-        containerElement.innerHTML += '<div class="content-block"><img src="' + results.items[i].snippet.thumbnails.medium.url + '"/> <div class="content"> <h4>' + results.items[i].snippet.title + '</h4><p class="channel">' + results.items[i].snippet.channelTitle + '</p> <p class="description">' + results.items[i].snippet.description + '</p><p>Uploaded on: ' + results.items[i].snippet.publishedAt.split('T')[0] + '</p></div></div>';
+        if (i % 4 == 0) {
+            row = document.createElement('div');
+            row.className = 'row';
+            rowHtml = '';
+        }
+        rowHtml += '<div class="col-sm-6 col-md-3"><div class="content-block"><img src="' + results.items[i].snippet.thumbnails.medium.url + '"/> <div class="content"> <h4>' + results.items[i].snippet.title + '</h4><p class="channel">' + results.items[i].snippet.channelTitle + '</p> <p class="description">' + results.items[i].snippet.description + '</p></div></div></div>';
+        if (i % 4 == 3) {
+            row.innerHTML = rowHtml;
+            containerElement.appendChild(row);
+        }
     }
 }
