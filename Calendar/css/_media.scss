@@ -1,0 +1,99 @@
+@media only screen and (min-width: 425px) and (max-width: 550px){
+    %divider {
+        width: 52px;
+        font-size: 18px;
+
+    }
+
+    .main {
+        width: 420px;
+
+        .month-year-container {
+            height: 80px;
+
+            .middle-content {
+                margin: 0 5px;
+
+                select {
+                    font-size: 20px;
+                }
+            }
+
+            i {
+                font-size: 32px;
+            }
+
+        }
+
+        .week-days {
+            height: 30px;
+
+            .day {
+                font-size: 18px;
+                padding-bottom: 0;
+            }
+        }
+
+        .week {
+            .week-block {
+                height: 40px;
+                padding-top: 5px;
+            }
+        }
+
+        .dates {
+             height: 40px;
+             padding-top: 5px;
+
+            .birthdayBlock {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 768px) {
+    %divider {
+        width: 68px;
+        font-size: 22px;
+    }
+
+    .main {
+        width: 550px;
+
+        .month-year-container {
+            .middle-content {
+                margin: 0 15px;
+
+                select {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .week-days {
+            height: 40px;
+
+            .day {
+                font-size: 22px;
+                padding-bottom: 2px;
+            }
+        }
+
+        .week {
+            .week-block {
+                height: 50px;
+                padding-top: 10px;
+            }
+        }
+
+        .dates {
+             height: 50px;
+             padding-top: 10px;
+
+            .birthdayBlock {
+                font-size: 14px;
+            }
+        }
+    }
+}
