@@ -77,3 +77,10 @@ nav {
         height: 70%;
     }
 }
+
+@media only screen and (max-width: 768px) {
+        .container .content-block {
+            width: 75%;
+            margin: 20px auto;
+    }
+}
